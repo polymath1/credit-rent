@@ -1,33 +1,42 @@
+import React from "react";
 import Navbar from "./Navbar";
 import Home from "./pages/home"
 import LogIn from "./pages/LogIn";
 import { Route, Routes } from "react-router-dom";
-import Register from "./pages/Register";
+import Signup from "./pages/Signup";
 import PayPal from "./pages/PayPal";
+import { Container } from 'react-bootstrap';
+import { AuthProvider } from "./contexts/AuthContext";
 
 
 
 
 function App() {
 return ( 
+
   <>
   <Navbar />
+  
+<AuthProvider>
+<Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh"}}>
 <div className="App">
   
-  <div className="container">
+
+
     <Routes>
       <Route path="/" element= {<Home/>} />
-      <Route path="/Register" element= {<Register/>} />
+      <Route path="/Signup" element= {<Signup/>} />
       <Route path="/Login" element= {<LogIn/>} />
       <Route path="/PayPal" element= {<PayPal/>} />
       
       
     </Routes>
-
-  </div>
+    
+  
 </div> 
+</Container>
+</AuthProvider>
 </> 
   )
 }
 export default App;
- 

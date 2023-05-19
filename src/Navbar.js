@@ -4,7 +4,7 @@ export default function Navbar () {
     return <nav className="nav">
         <Link to="/" className="site-title">Credit Rent</Link>
         <ul>
-            <CustomLink to="/Register">Register</CustomLink>
+            <CustomLink to="/Signup">Register</CustomLink>
             <CustomLink to="/login">LogIn</CustomLink>
             
         </ul>
