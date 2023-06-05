@@ -13,7 +13,7 @@ export default function Home() {
    
    </div>
    <div class="col-md-12 text-center">
-      <a class="btn btn-primary btn-lg" href="/signup">Get Started</a>
+      <a class="btn btn-primary btn-lg" href="/Signup">Get Started</a>
    </div>
    </>
    )
