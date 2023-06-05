@@ -1,25 +1,56 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { Form, Button, Card, Alert } from 'react-bootstrap';
+import { useAuth } from '../contexts/AuthContext';
+import { Link, useNavigate } from 'react-router-dom' 
 
-export default function LogIn() {
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
+export default function Login() {
+    const emailRef = useRef()
+    const passwordRef = useRef() 
+    const { login } = useAuth()
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
+    async function handleSubmit(e) {
+        e.preventDefault()
+
+       
+
+        try {
+            setError('')
+            setLoading(true)
+        await login(emailRef.current.value, passwordRef.current.value)
+        navigate('/PayPal')
+    } catch {
+        setError(' Failed to log in')
     }
+    setLoading(false)
+}
 
     return (
-        <div className="auth-form-container">
-        <form className="login-form" onSubmit={handleSubmit}>
-            <label htmlFor="email">email</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
-            <label htmlFor="password">password</label>
-            <input  value={pass} onChange={(e) => setPass(e.target.value)} type="pass" placeholder="*******" id="password" name="password" />
-            <button type="submit">Login</button>
-    <Link to="/register" className="site-title"> <button className="link-btn"> Don't have an account, Register here</button> </Link>
-        </form>
-         </div>
+        <>
+
+            <Card className="">
+                <Card.Body>
+                    <h2 className="text-center mb-4"  >Log In</h2>
+                    { error && <Alert variant = "danger">{error}</Alert>}
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group id="email">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" ref={emailRef} required/>
+                        </Form.Group>
+                        <Form.Group id="password">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" ref={passwordRef} required/>
+                        </Form.Group>
+                        <Button disabled={loading} className="w-100" type="submit">Log In</Button>
+                    </Form>
+                </Card.Body>
+            </Card>
+            <div className="w-100 text-center mt-2 text-primary">
+                Don't have an account? < Link to="/signup"> Sign Up</Link>
+            </div>
+
+        </>
     )
 }

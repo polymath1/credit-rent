@@ -10,7 +10,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 
 
 
-
 function App() {
 return ( 
 
@@ -24,7 +23,7 @@ return (
 
 
     <Routes>
-      <Route path="/" element= {<Home/>} />
+      <Route path="/" element= {<Home/>} /> 
       <Route path="/Signup" element= {<Signup/>} />
       <Route path="/Login" element= {<LogIn/>} />
       <Route path="/PayPal" element= {<PayPal/>} />
