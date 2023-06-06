@@ -2,7 +2,7 @@
   "homepage": "http://polymath1.github.io",
   "name": "credit-rent",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.52.1",
