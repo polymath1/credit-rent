@@ -6,7 +6,7 @@ import { Button, Card } from 'react-bootstrap';
 export default function PayPal() { 
 
     const paypal = useRef();
-    const [error, setError] = useState("")
+    const [setError] = useState("")
     const { currentUser, logout } = useAuth("") 
     const avigate = useNavigate()
 
