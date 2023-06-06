@@ -15,7 +15,7 @@ return (
 
   <>
   <Navbar />
-  
+ 
 <AuthProvider>
 <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh"}}>
 <div className="App">
